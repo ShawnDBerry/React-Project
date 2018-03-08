@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import Person from './Person/Person';
-
+require('dotenv').config()
 class App extends Component {
 
   constructor() {
@@ -9,7 +9,7 @@ class App extends Component {
     this.state = {
       person: [
         {
-          id:'dfgdfg',
+          id: 'dfgdfg',
           name: 'Max',
           age: 28
         }, {
@@ -30,10 +30,11 @@ class App extends Component {
     const personsList = this
       .state
       .person
-      .map((person, index) => 
-      <div>
-        <Person name={person.name} age={person.age} click={() => this.deletePersonHandler(index)} key={person.id}></Person>
-      </div>);
+      .map((person, index) => <Person
+        name={person.name}
+        age={person.age}
+        click={() => this.deletePersonHandler(index)}
+        key={person.id}></Person>);
     return personsList;
   }
 
@@ -55,15 +56,16 @@ class App extends Component {
 
     return (
       <div className="App">
-        <h1>Hi, I'm a React App</h1>
+        <h1>{process.env.REACT_APP_SECRET_CODE}</h1>
         <p>This is really working!</p>
-        <button style={style} onClick={() => this.setState({showing: !this.state.showing})}>Click</button>
+        <button
+          style={style}
+          onClick={() => this.setState({
+          showing: !this.state.showing
+        })}>Click</button>
         {this.state.showing
           ? <div>
               {this.personList()}
-              {/* <Person name={this.state.person[0].name} age={this.state.person[0].age}></Person>
-              <Person name={this.state.person[1].name} age={this.state.person[1].age}></Person>
-              <Person name={this.state.person[2].name} age={this.state.person[2].age}></Person> */}
             </div>
           : null
 }
