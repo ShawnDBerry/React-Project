@@ -38,6 +38,7 @@ class App extends Component {
     return personsList;
   }
 
+  
   deletePersonHandler = personIndex => {
     const persons = [...this.state.person];
     persons.splice(personIndex, 1);
@@ -47,12 +48,21 @@ class App extends Component {
   render() {
 
     const style = {
-      backgroundColor: 'white',
+      backgroundColor: 'green',
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
       cursor: 'pointer'
     };
+let persons = null;
+  
+if(this.state.showing){
+ persons = <div>
+      {this.personList()}
+    </div>
+  style.backgroundColor='red'
+}
+  
 
     return (
       <div className="App">
@@ -63,12 +73,7 @@ class App extends Component {
           onClick={() => this.setState({
           showing: !this.state.showing
         })}>Click</button>
-        {this.state.showing
-          ? <div>
-              {this.personList()}
-            </div>
-          : null
-}
+     {persons}
 
       </div>
     );
