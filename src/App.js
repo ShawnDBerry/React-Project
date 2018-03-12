@@ -50,6 +50,7 @@ class App extends Component {
     const style = {
       backgroundColor: 'green',
       font: 'inherit',
+      color: 'white',
       border: '1px solid blue',
       padding: '8px',
       cursor: 'pointer'
@@ -60,7 +61,8 @@ if(this.state.showing){
  persons = <div>
       {this.personList()}
     </div>
-  style.backgroundColor='red'
+  style.backgroundColor = 'red'
+  style.color = 'black'
 }
   
 
