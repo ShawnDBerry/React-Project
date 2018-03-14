@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
+import Radium from 'radium';
 import './App.css';
 import Person from './Person/Person';
 require('dotenv').config()
+
 class App extends Component {
 
   constructor() {
@@ -48,12 +50,16 @@ class App extends Component {
   render() {
 
     const style = {
-      backgroundColor: 'green',
+      backgroundColor: 'orange',
       font: 'inherit',
       color: 'white',
       border: '1px solid blue',
       padding: '8px',
-      cursor: 'pointer'
+      cursor: 'pointer',
+      ':hover': {
+        backgroundColor: 'green',
+        color: 'black'
+      }
     };
 let persons = null;
   
@@ -63,13 +69,25 @@ if(this.state.showing){
     </div>
   style.backgroundColor = 'red'
   style.color = 'black'
+  style[':hover'] = {
+    backgroundColor: 'salmon',
+    color: 'green'
+  }
 }
   
+let classes = [];
 
+if(this.state.person.length <= 2)
+classes.push('red');
+
+if(this.state.person.length <= 1)
+classes.push('bold');
+
+let JoinClasses = classes.join(' ');
     return (
       <div className="App">
         <h1>{process.env.REACT_APP_SECRET_CODE}</h1>
-        <p>This is really working!</p>
+        <p className={JoinClasses}>This is really working!</p>
         <button
           style={style}
           onClick={() => this.setState({
@@ -84,4 +102,4 @@ if(this.state.showing){
   }
 }
 
-export default App;
+export default Radium(App);

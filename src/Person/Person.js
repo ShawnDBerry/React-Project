@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
+import Radium from 'radium';
 import './Person.css';
 
-export default class Person extends Component {
+
+class Person extends Component {
     constructor(props) {
         super();
     };
@@ -18,3 +20,4 @@ export default class Person extends Component {
     }
 
 }
+export default Radium(Person);
