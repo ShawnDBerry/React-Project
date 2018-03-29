@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import classes from './Cockpit.css';
-
+import WithClass from '../../hos/WIthClass'
+import Aux from '../../hos/Aux';
 class Cockpit extends Component  {
     render(){ 
     const assignedClasses = [];
-    let btnClass = '';
+    let btnClass = classes.Button;
     if (this.props.showPersons) {
-        btnClass = classes.Red;
+        btnClass = [classes.Button, classes.Red].join(' ');
     }
 
     if ( this.props.persons.length <= 2 ) {
@@ -17,14 +18,14 @@ class Cockpit extends Component  {
     }
 
     return (
-        <div className={classes.Cockpit}>
+        <Aux>
             <h1>{ this.props.appTitle }</h1>
             <p className={assignedClasses.join( ' ' )}>This is really working!</p>
             <button
                 className={btnClass}
                 onClick={this.props.clicked}>Toggle Persons</button>
-        </div>
+        </Aux>
     );
 };
 }
-export default Cockpit;
+export default WithClass(Cockpit, classes.Button);
