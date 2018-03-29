@@ -1,10 +1,16 @@
-import React from 'react';
+import React, {Component} from 'react';
 
-const withClass = props => {
-    return  (WrappedComponent, className) => 
-    <div className={props.MyClasses}>
-        {props.children}
-    </div>
+const withClass = (WrappedComponent, classNameFool) => {
+    return class extends Component {
+        render() {
+            return (
+                <div className={classNameFool}>
+                    <WrappedComponent {...this.props}/>
+                </div>
+            )
+        }
+
+    }
 
 };
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classes from './Cockpit.css';
-import WithClass from '../../hos/WIthClass'
+import WithClass from '../../hos/WithClass'
 import Aux from '../../hos/Aux';
 class Cockpit extends Component  {
     render(){ 
@@ -28,4 +28,4 @@ class Cockpit extends Component  {
     );
 };
 }
-export default WithClass(Cockpit, classes.Button);
+export default WithClass(Cockpit, classes.Cockpit);
